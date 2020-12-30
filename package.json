@@ -8,7 +8,7 @@
     "url": "git+https://github.com/hai2007/node.js.git"
   },
   "bin": {
-    "nodejs": "bin/run"
+    "hai2007": "bin/run"
   },
   "keywords": [
     "node.js",
