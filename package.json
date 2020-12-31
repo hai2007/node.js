@@ -1,6 +1,6 @@
 {
   "name": "@hai2007/nodejs",
-  "version": "0.0.0-alpha",
+  "version": "0.1.0",
   "description": "🔨 node.js常用的基础方法汇总。 ",
   "main": "index.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/hai2007/node.js.git"
   },
   "bin": {
-    "hai2007": "bin/run"
+    "hai2007_nodejs": "bin/run"
   },
   "keywords": [
     "node.js",

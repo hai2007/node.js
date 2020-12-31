@@ -3,3 +3,142 @@
 'use strict';
 
 process.title = '@hai2007/nodejs';
+
+const hai2007_tool = require('@hai2007/tool');
+const hai2007_nodejs = require('../index');
+const options = require('./options').config;
+const help = require('./options').help;
+const fs = require('fs');
+const path = require('path');
+
+const jsonfile = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')));
+
+// 用于处理 --config 配置文件
+const bootstrap = require('./bootstrap');
+
+// 组装好缩写和全写的映射
+let shortHands = {};
+for (let key in options) {
+  if (options[key].short) shortHands["-" + options[key].short] = "--" + key;
+}
+
+// 命令行传递的参数
+const parsed = hai2007_nodejs.option(shortHands, process.argv);
+
+// 打印版本
+if (hai2007_tool.isArray(parsed.version)) {
+  hai2007_nodejs.log("\nv" + jsonfile.version + "\n");
+  return;
+}
+
+// 如果添加了配置文件，直接根据配置文件运行
+if (hai2007_tool.isArray(parsed.config)) {
+
+  if (parsed.config.length < 1) {
+    hai2007_nodejs.error('Config file [eg. hai2007_nodejs.config.js] is required!');
+  } else {
+
+    // 启动配置文件运行
+    bootstrap(hai2007_nodejs.fullPath(parsed.config[0]), parsed.config[1]);
+  }
+  return;
+}
+
+// 判断是否需要帮助
+if (hai2007_tool.isArray(parsed.help)) {
+
+  // 打印具体的配置提示
+  if (parsed.help.length > 0) {
+    let help0 = parsed.help[0];
+
+    // 缩写转全拼
+    if (help0.length == 1) {
+      help0 = shortHands["-" + help0];
+    }
+
+    if (help0) {
+      help0 = help0.replace(/^--/, "");
+
+      // 根据需要帮助的命令获取对应的信息
+      const help0Option = options[help0];
+      hai2007_nodejs.log(`
+  ` + help0Option.demo + `         ` + help0Option.info + `
+        `);
+
+      return;
+    }
+
+  }
+
+  // 打印统一提示
+  hai2007_nodejs.log(help);
+}
+
+// 非帮助，开始执行具体的任务
+// 不同命令之间存在执行优先级
+// 这里的编写顺序需要和options.js中不同命令前面的[num]数字对应
+// 数字越小优先级越高，非数字不参与优先级竞争
+else {
+
+  // 删除
+  if (hai2007_tool.isArray(parsed.delete) && parsed.delete.length > 0) {
+
+    // 获取绝对路径
+    let targetPath = hai2007_nodejs.fullPath(parsed.delete[0]);
+
+    // 判断文件是否存在
+    if (!fs.existsSync(targetPath)) {
+      return;
+    };
+
+    // 操作并打印日志
+    hai2007_nodejs.deleteSync(targetPath, true);
+    hai2007_nodejs.linelog('【delete】' + targetPath + '\n');
+  }
+
+  // 复制
+  else if (hai2007_tool.isArray(parsed.copy) && parsed.copy.length > 1) {
+
+    // 获取绝对路径
+    let sourcePath = hai2007_nodejs.fullPath(parsed.copy[0]);
+    let targetPath = hai2007_nodejs.fullPath(parsed.copy[1]);
+
+    // 操作并打印日志
+    hai2007_nodejs.copySync(sourcePath, targetPath, true);
+    hai2007_nodejs.linelog('【copy】' + sourcePath + ' → ' + targetPath + '\n');
+  }
+
+  // 剪切
+  else if (hai2007_tool.isArray(parsed.move) && parsed.move.length > 1) {
+
+    // 获取绝对路径
+    let sourcePath = hai2007_nodejs.fullPath(parsed.move[0]);
+    let targetPath = hai2007_nodejs.fullPath(parsed.move[1]);
+
+    // 操作并打印日志
+    hai2007_nodejs.moveSync(sourcePath, targetPath, true);
+    hai2007_nodejs.linelog('【move】' + sourcePath + ' → ' + targetPath + '\n');
+  }
+
+  // 服务器
+  else if (hai2007_tool.isArray(parsed.server)) {
+
+    hai2007_nodejs.server({
+      port: parsed.server[0],
+      contentBase: hai2007_nodejs.fullPath(parsed.server[1] || "./", process.cwd())
+    });
+
+  }
+
+  // 否则
+  else {
+
+    hai2007_nodejs.log(`
+  ` + jsonfile.name + `@v` + jsonfile.version + `
+  ----------------------------------------
+  ` + jsonfile.repository.url + `
+
+  ` + help + `
+    `);
+  }
+}

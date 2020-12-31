@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "test1": "node ../../bin/run --config ./hai2007_nodejs.config.js demo1",
+    "test2": "node ../../bin/run --config ./hai2007_nodejs.config.js demo2",
+    "test": "node ../../bin/run --config ./hai2007_nodejs.config.js"
+  }
+}
