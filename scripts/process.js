@@ -1,3 +1,13 @@
+/*!
+ * 🔨 - 进度打印
+ * https://github.com/hai2007/node.js/blob/master/scripts/process.js
+ *
+ * author hai2007 < https://hai2007.gitee.io/sweethome >
+ *
+ * Copyright (c) 2020-present hai2007 走一步，再走一步。
+ * Released under the MIT license
+ */
+
 const linelog = require('./print').linelog;
 
 /**

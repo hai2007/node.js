@@ -26,6 +26,7 @@ const hai2007_nodejs = require('@hai2007/nodejs');
 - [解析命令行参数](https://github.com/hai2007/node.js/blob/master/docs/option.md)
 - [文件操作相关](https://github.com/hai2007/node.js/blob/master/docs/file.md)
 - [日志打印](https://github.com/hai2007/node.js/blob/master/docs/print.md)
+- [进度打印](https://github.com/hai2007/node.js/blob/master/docs/process.md)
 - [路径](https://github.com/hai2007/node.js/blob/master/docs/path.md)
 - [服务器](https://github.com/hai2007/node.js/blob/master/docs/server.md)
 
@@ -38,4 +39,4 @@ const hai2007_nodejs = require('@hai2007/nodejs');
 ---------------------------------------
 [MIT](https://github.com/hai2007/node.js/blob/master/LICENSE)
 
-Copyright (c) 2020 [hai2007](https://hai2007.gitee.io/sweethome/) 走一步，再走一步。
+Copyright (c) 2020-present [hai2007](https://hai2007.gitee.io/sweethome/) 走一步，再走一步。

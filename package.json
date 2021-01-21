@@ -1,6 +1,6 @@
 {
   "name": "@hai2007/nodejs",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "🔨 node.js常用的基础方法汇总。 ",
   "main": "index.js",
   "repository": {
@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/hai2007/node.js#readme",
   "dependencies": {
-    "@hai2007/tool": "^0.4.0"
+    "@hai2007/tool": "^0.6.1"
   }
 }

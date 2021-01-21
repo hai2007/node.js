@@ -1,3 +1,13 @@
+/*!
+ * 🔨 - node.js常用的基础方法汇总
+ * https://github.com/hai2007/node.js.git
+ *
+ * author hai2007 < https://hai2007.gitee.io/sweethome >
+ *
+ * Copyright (c) 2020-present hai2007 走一步，再走一步。
+ * Released under the MIT license
+ */
+
 const option = require('./scripts/option');
 const file = require('./scripts/file');
 const print = require('./scripts/print');
