@@ -6,6 +6,9 @@
   <a href="https://www.jsdelivr.com/package/npm/@hai2007/nodejs"><img src="https://data.jsdelivr.com/v1/package/npm/@hai2007/nodejs/badge" alt="CDN"></a>
   <a href="https://www.npmjs.com/package/@hai2007/nodejs"><img src="https://img.shields.io/npm/v/@hai2007/nodejs.svg" alt="Version"></a>
   <a href="https://github.com/hai2007/node.js/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@hai2007/nodejs.svg" alt="License"></a>
+  <a href="https://github.com/hai2007/node.js">
+      <img alt="GitHub repo stars" src="https://img.shields.io/github/stars/hai2007/node.js?style=social">
+  </a>
 </p>
 
 ## Issues
@@ -29,11 +32,6 @@ const hai2007_nodejs = require('@hai2007/nodejs');
 - [进度打印](https://github.com/hai2007/node.js/blob/master/docs/process.md)
 - [路径](https://github.com/hai2007/node.js/blob/master/docs/path.md)
 - [服务器](https://github.com/hai2007/node.js/blob/master/docs/server.md)
-
-## 联系我们
-
-- QQ: 2501482523
-- Email: 2501482523@qq.com
 
 开源协议
 ---------------------------------------
