@@ -39,12 +39,19 @@ module.exports = function (config) {
       // 文件类型
       type = mineTypes[dotName];
 
-    // 如果需要读取的文件存在
-    if (fs.existsSync(filePath) && !fs.lstatSync(filePath).isDirectory()) {
-      content = fs.readFileSync(filePath);
-    } else {
-      status = 404;
-      content = responseFileList(filePath);
+    try {
+
+      // 如果需要读取的文件存在
+      if (fs.existsSync(filePath) && !fs.lstatSync(filePath).isDirectory()) {
+        content = fs.readFileSync(filePath);
+      } else {
+        status = 404;
+        content = responseFileList(filePath);
+      }
+    } catch (e) {
+      content = e + "";
+      status = '500';
+      type = 'text/plain';
     }
 
     response.writeHead(status, {

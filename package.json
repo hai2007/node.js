@@ -1,6 +1,6 @@
 {
   "name": "@hai2007/nodejs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "🔨 node.js常用的基础方法汇总。 ",
   "main": "index.js",
   "repository": {
