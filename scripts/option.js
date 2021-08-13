@@ -20,8 +20,10 @@
  */
 module.exports = function (config, argv) {
 
-  let resultConfig = {}, flag = null;
-  for (let i = 0; i < argv.length; i++) {
+  let resultConfig = {
+    __terminal__: []
+  }, flag = null;
+  for (let i = 2; i < argv.length; i++) {
 
     // 如果是新的配置
     if (/^--[0-9a-zA-Z]+$/.test(argv[i]) || /^-[0-9a-zA-Z]$/.test(argv[i])) {
@@ -45,6 +47,10 @@ module.exports = function (config, argv) {
     // 如果是普通的参数
     else if (flag != null) {
       resultConfig[flag].push(argv[i]);
+    }
+
+    else {
+      resultConfig.__terminal__.push(argv[i]);
     }
 
   }

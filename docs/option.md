@@ -9,4 +9,15 @@
 const parsed = hai2007_nodejs.option(shortHands, process.argv);
 ```
 
+返回格式如下：
+
+```js
+// 命令 creaste  --name 名字 -c 文件1 文件2
+{ 
+  __terminal__: [ 'creaste' ], 
+  name: [ '名字' ], 
+  copy: [ '文件1', '文件2' ]
+}
+```
+
 [<< 返回首页](../README.md)
